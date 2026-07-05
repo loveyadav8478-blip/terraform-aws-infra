@@ -32,32 +32,32 @@ module "iam" {
 module "compute" {
   source = "../../modules/compute"
 
-  project_name        = var.project_name
-  environment         = var.environment
-  vpc_id              = module.vpc.vpc_id
-  public_subnet_ids   = module.vpc.public_subnet_ids
-  private_subnet_ids  = module.vpc.private_subnet_ids
-  ami_id              = data.aws_ami.amazon_linux.id
-  instance_type       = var.instance_type
-  desired_capacity    = var.desired_capacity
-  min_size            = var.min_size
-  max_size            = var.max_size
-  tags                = local.common_tags
+  project_name       = var.project_name
+  environment        = var.environment
+  vpc_id             = module.vpc.vpc_id
+  public_subnet_ids  = module.vpc.public_subnet_ids
+  private_subnet_ids = module.vpc.private_subnet_ids
+  ami_id             = data.aws_ami.amazon_linux.id
+  instance_type      = var.instance_type
+  desired_capacity   = var.desired_capacity
+  min_size           = var.min_size
+  max_size           = var.max_size
+  tags               = local.common_tags
 }
 
 module "rds" {
   source = "../../modules/rds"
 
-  project_name           = var.project_name
-  environment            = var.environment
-  vpc_id                 = module.vpc.vpc_id
-  private_subnet_ids     = module.vpc.private_subnet_ids
-  app_security_group_id  = module.compute.app_security_group_id
-  db_username            = var.db_username
-  db_password            = var.db_password
-  multi_az               = var.db_multi_az
-  instance_class         = var.db_instance_class
-  tags                   = local.common_tags
+  project_name          = var.project_name
+  environment           = var.environment
+  vpc_id                = module.vpc.vpc_id
+  private_subnet_ids    = module.vpc.private_subnet_ids
+  app_security_group_id = module.compute.app_security_group_id
+  db_username           = var.db_username
+  db_password           = var.db_password
+  multi_az              = var.db_multi_az
+  instance_class        = var.db_instance_class
+  tags                  = local.common_tags
 }
 
 locals {
