@@ -6,6 +6,7 @@
 *.tfstate.*
 crash.log
 crash.*.log
+*.tfvars.example
 
 # Sensitive variable files - never commit real values
 *.tfvars
